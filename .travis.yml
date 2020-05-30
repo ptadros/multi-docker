@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t ptadros/client-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true ptadros/client-test npm test
+
+after_success:
+  - docker build -t ptadros/multi-client ./client
+  - docker build -t ptadros/multi-nginx ./nginx
+  - docker build -t ptadros/multi-server ./server
+  - docker build -t ptadros/multi-worker ./worker
+  # Log in to Docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to Docker Hub
+  - docker push ptadros/multi-client
+  - docker push ptadros/multi-nginx
+  - docker push ptadros/multi-server
+  - docker push ptadros/multi-worker
