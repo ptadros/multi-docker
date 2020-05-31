@@ -16,6 +16,7 @@ const { Pool } = require('pg');
 const pgClient = new Pool({
   host: keys.pgHost,
   port: keys.pgPort,
+  database: keys.pgDatabase,
   user: keys.pgUser,
   password: keys.pgPassword
 });
