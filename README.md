@@ -1,6 +1,10 @@
 ## Overview
 This application is an example of a multi-docker appplication running on AWS Elastic Beanstalk. The application is integrated with [Travis CI](http://travis-ci.org/) and deployed to Elastic Beanstalk using Multicontainer Docker configuration.
 
+- The below diagram shows an overview of the application architecture.
+
+![Architecture](https://github.com/ptadros/multi-docker/blob/master/architecture.png)
+
 ## Getting Started
 
 ### Development
@@ -24,3 +28,6 @@ You need to create the following resources in AWS to prepare production environm
 - Create Redis ElasticCache instance
 - Adjust a security group between the above three resources.
 - Create a deployment user and place credentials in Travis CI environment variables
+
+## Reference
+This application is an exercise application from [Docker and Kubernetes The Complete Guide](https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide/) course.
